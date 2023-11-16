@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.universities.organization_educational_process.persistence.dao.services.implementations.CustomUserDetailsService;
@@ -50,9 +51,14 @@ public class WebSecurityConfig {
         return provider;
     }
 
+//    @Bean
+//    public PasswordEncoder passwordEncoder(){
+//        return new BCryptPasswordEncoder(8);
+//    }
+
     @Bean
     public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder(8);
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
     @Bean

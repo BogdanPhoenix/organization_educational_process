@@ -1,5 +1,6 @@
 package org.universities.organization_educational_process.controllers;
 
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -17,13 +18,8 @@ public class UserInfoController {
     private final UsersInfoSimpleService usersInfoService;
     private final RolesSimpleService rolesSimpleService;
 
-    @GetMapping("/login")
-    public String login(){
-        return "login";
-    }
-
     @GetMapping("/registration")
-    public String registration(Model model){
+    public String registration(@NonNull Model model){
         var roles = rolesSimpleService.findAll();
         roles.removeIf(r -> r.getNameRole().equalsIgnoreCase("admin"));
 
@@ -33,16 +29,11 @@ public class UserInfoController {
 
     @PostMapping("/registration")
     public String createUser(UsersInfo user, Model model){
-        if(!usersInfoService.isExistUser(user)) {
+        if(usersInfoService.isExistUser(user)) {
             model.addAttribute("errorMessage", String.format("The user with the email: %s has already been registered.", user.getUserEmail()));
             return "registration";
         }
         usersInfoService.createUser(user);
         return "redirect:/login";
-    }
-
-    @GetMapping("/home")
-    public String securityUrl(){
-        return "home";
     }
 }

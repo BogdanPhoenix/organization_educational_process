@@ -10,7 +10,7 @@ public class WebMvcConfigurerAdapter implements WebMvcConfigurer {
     @Override
     public void addViewControllers(org.springframework.web.servlet.config.annotation.ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("home");
-        registry.addViewController("/admin_page").setViewName("admin_page");
+        registry.addViewController("/admin-page").setViewName("admin-page");
         registry.addViewController("/home").setViewName("home");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/registration").setViewName("registration");

@@ -36,7 +36,7 @@ public class Roles implements GrantedAuthority {
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
     @OnDelete(action = OnDeleteAction.SET_DEFAULT)
-    private transient Set<UsersInfo> usersInfos;
+    private transient Set<UsersInfo> usersInfo;
 
     @Override
     public String getAuthority() {

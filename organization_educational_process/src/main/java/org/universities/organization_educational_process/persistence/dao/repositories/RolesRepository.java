@@ -9,4 +9,5 @@ import org.universities.organization_educational_process.persistence.model.Roles
 @Transactional
 public interface RolesRepository extends JpaRepository<Roles, Long> {
     Roles findByIndexRole(Long indexRole);
+    Roles findByNameRole(String name);
 }

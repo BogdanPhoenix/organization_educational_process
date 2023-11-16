@@ -8,4 +8,6 @@ public interface RolesSimpleService {
     List<Roles> findAll();
     Roles addRole(Roles role);
     Roles findByIndex(Long indexRole);
+    Roles findByName(String name);
+    void deleteAllRoles();
 }

@@ -12,6 +12,9 @@
     Password: <label>
         <input type="password" name="passwordUser">
     </label><br/><br/>
+     Repeat password: <label>
+        <input type="password" name="repeatPassword">
+    </label><br/><br/>
     First name: <label>
         <input type="text" name="firstName">
     </label><br/><br/>
@@ -23,9 +26,11 @@
     </label><br/><br/>
     <label for="dropdown">Choose an role:</label>
     <select id="dropdown" name="role">
-        <#list roles as role>
-            <option value="${role.indexRole}">${role.nameRole}</option>
-        </#list>
+        <#if roles??>
+            <#list roles as role>
+                <option value="${role.indexRole}">${role.nameRole}</option>
+            </#list>
+        </#if>
     </select>
     <input type="hidden" name="_csrf" value="${_csrf.token}">
     <br/>
