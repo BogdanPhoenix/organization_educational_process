@@ -17,7 +17,7 @@ import java.util.Set;
 @ToString
 @Entity
 @Table(name = "users_info", uniqueConstraints = {@UniqueConstraint(columnNames = {"last_name", "first_name", "patronymic"})})
-public class UsersInfo implements UserDetails {
+public class UsersInfo{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "index_user")
@@ -48,8 +48,21 @@ public class UsersInfo implements UserDetails {
     @NonNull
     private String patronymic;
 
+    @Column(name = "failed_login_attempts")
+    private int failedLoginAttempts;
+
+    @Column(name = "logic_disabled")
+    private boolean loginDisabled;
+
+    @Column(name = "mfa_enabled", nullable = false)
+    private boolean mfaEnabled;
+
+    @Column(name = "secret", nullable = false)
+    @NonNull
+    private String secret;
+
     @Column(name = "current_data", nullable = false)
-    private boolean currentData = true;
+    private boolean currentData = false;
 
     @PreRemove
     public void preRemove() {
@@ -58,50 +71,17 @@ public class UsersInfo implements UserDetails {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @OnDelete(action = OnDeleteAction.SET_DEFAULT)
-    private transient Teachers teacher;
+    private Teachers teacher;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @OnDelete(action = OnDeleteAction.SET_DEFAULT)
-    private transient Students student;
+    private Students student;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @OnDelete(action = OnDeleteAction.SET_DEFAULT)
-    private transient Set<BookingAuditoriums> bookingAuditoriums;
+    private Set<BookingAuditoriums> bookingAuditoriums;
 
-    //security
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(role);
-    }
-
-    @Override
-    public String getPassword() {
-        return passwordUser;
-    }
-
-    @Override
-    public String getUsername() {
-        return userEmail;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return currentData;
-    }
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OnDelete(action = OnDeleteAction.SET_DEFAULT)
+    private Set<SecureToken> secureTokens;
 }
