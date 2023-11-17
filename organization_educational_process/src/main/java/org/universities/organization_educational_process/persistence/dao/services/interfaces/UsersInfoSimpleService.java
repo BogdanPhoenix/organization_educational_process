@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface UsersInfoSimpleService {
     boolean isExistUser(UsersInfo user);
+    boolean isExistUser(String userEmail);
     UsersInfo createUser(UsersInfo user);
     List<UsersInfo> findAll();
     void deleteAllUsers();
-    void sendRegistrationConfirmationEmail(UsersInfo user);
 }

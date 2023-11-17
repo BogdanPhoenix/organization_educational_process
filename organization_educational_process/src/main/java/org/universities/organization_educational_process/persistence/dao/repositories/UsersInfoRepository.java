@@ -5,8 +5,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.universities.organization_educational_process.persistence.model.UsersInfo;
 
+import java.util.Optional;
+
 @Repository
 @Transactional
 public interface UsersInfoRepository extends JpaRepository<UsersInfo, Long> {
-    UsersInfo findByUserEmail(String email);
+    Optional<UsersInfo> findByUserEmail(String email);
 }

@@ -11,10 +11,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "users_info", uniqueConstraints = {@UniqueConstraint(columnNames = {"last_name", "first_name", "patronymic"})})
 public class UsersInfo implements UserDetails {
