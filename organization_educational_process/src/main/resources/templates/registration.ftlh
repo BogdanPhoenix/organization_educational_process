@@ -12,9 +12,9 @@
     Password: <label>
         <input type="password" name="passwordUser">
     </label><br/><br/>
-     Repeat password: <label>
-        <input type="password" name="repeatPassword">
-    </label><br/><br/>
+<#--     Repeat password: <label>-->
+<#--        <input type="password" name="repeatPassword">-->
+<#--    </label><br/><br/>-->
     First name: <label>
         <input type="text" name="firstName">
     </label><br/><br/>
@@ -28,7 +28,7 @@
     <select id="dropdown" name="role">
         <#if roles??>
             <#list roles as role>
-                <option value="${role.indexRole}">${role.nameRole}</option>
+                <option value="${role}">${role.uaName}</option>
             </#list>
         </#if>
     </select>

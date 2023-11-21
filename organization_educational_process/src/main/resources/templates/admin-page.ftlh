@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Admin Page</title>
 </head>
 <body>
 Admin Page
+<a href="/"></a>
 </body>
 </html>

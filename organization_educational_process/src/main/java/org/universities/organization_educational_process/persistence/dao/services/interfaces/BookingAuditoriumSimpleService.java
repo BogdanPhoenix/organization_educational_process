@@ -1,0 +1,10 @@
+package org.universities.organization_educational_process.persistence.dao.services.interfaces;
+
+import org.universities.organization_educational_process.persistence.dao.services.interfaces.support_contracts.AddComponent;
+import org.universities.organization_educational_process.persistence.dao.services.interfaces.support_contracts.ExistInDB;
+import org.universities.organization_educational_process.persistence.dao.services.interfaces.support_contracts.FindAll;
+import org.universities.organization_educational_process.persistence.model.BookingAuditorium;
+import org.universities.organization_educational_process.persistence.requests.BookingAuditoriumRequest;
+
+public interface BookingAuditoriumSimpleService extends FindAll<BookingAuditorium>, AddComponent<BookingAuditoriumRequest>, ExistInDB<BookingAuditorium> {
+}

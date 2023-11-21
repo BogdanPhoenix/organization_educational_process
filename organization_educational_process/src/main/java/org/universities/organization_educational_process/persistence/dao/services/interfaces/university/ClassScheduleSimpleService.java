@@ -1,0 +1,10 @@
+package org.universities.organization_educational_process.persistence.dao.services.interfaces.university;
+
+import org.universities.organization_educational_process.persistence.dao.services.interfaces.support_contracts.AddComponent;
+import org.universities.organization_educational_process.persistence.dao.services.interfaces.support_contracts.ExistInDB;
+import org.universities.organization_educational_process.persistence.dao.services.interfaces.support_contracts.FindAll;
+import org.universities.organization_educational_process.persistence.model.university.ClassSchedule;
+import org.universities.organization_educational_process.persistence.requests.university.ClassScheduleRequest;
+
+public interface ClassScheduleSimpleService extends FindAll<ClassSchedule>, AddComponent<ClassScheduleRequest>, ExistInDB<ClassSchedule> {
+}
