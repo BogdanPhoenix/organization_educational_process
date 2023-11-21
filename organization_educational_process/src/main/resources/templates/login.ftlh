@@ -15,6 +15,7 @@
     <input type="hidden" name="_csrf" value="${_csrf.token}">
     <input type="submit" value="Login">
 </form>
-<a href="/registration">Registration</a>
+<#--<a href="/registration">Registration</a>-->
+<a href="/api/v1/auth/registration">Registration</a>
 </body>
 </html>
